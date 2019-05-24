@@ -1,20 +1,28 @@
 <?php
-	$db = mysql_connect('localhost', 'flash-quiz-kuce', 'FlashQuiz12') or die('Could not connect: ' . mysql_error());
-	mysql_select_db('flash-quiz-kuce') or die('Could not select database');
+
+	$db = mysqli_connect('localhost', 'id9699148_flashquiz', 'flashquiz2019','id9699148_flashquizkuce') or die('Could not connect: ' . mysql_error());
 
 	// Strings must be escaped to prevent SQL injection attack.
-	$userName = mysql_real_escape_string($_GET['username'], $db);
-	$pw = mysql_real_escape_string($_GET['pw'], $db);
-
-	$query  = "select * from users where user_name='$userName' and password='$pw'";
-	$result = mysql_query($query) or die('Query failed: ' . mysql_error());
-	$num_results = mysql_num_rows($result);
-
-
-	for($i = 0; $i < $num_results; $i++)
-	{
-		$row = mysql_fetch_array($result);
-		echo $row['id']";";
+	$userName = $_GET['username'];
+	$pw = $_GET['pw'];
+	
+	if(is_null($userName) || is_null($pw)){
+		echo "NULL";
 	}
-
+	else{
+		$userName = mysqli_real_escape_string($db,$_GET['username']);
+		$pw = mysqli_real_escape_string($db,$_GET['pw']);
+		
+		$query  = "select * from users where user_name='$userName' and pw='$pw'";
+		echo $query;
+		$result = mysqli_query($db,$query);
+		if($row=mysqli_fetch_assoc($result)){
+			echo $row['email'];
+		}
+		else{
+			echo "NO RES";
+		}
+		
+	}
+	
 ?>

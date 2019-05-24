@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 821583238}
   - component: {fileID: 821583237}
   m_Layer: 5
-  m_Name: loginBtn
+  m_Name: registerBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -688,7 +688,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 679463872}
-        m_MethodName: UserLogin
+        m_MethodName: RegisterScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
